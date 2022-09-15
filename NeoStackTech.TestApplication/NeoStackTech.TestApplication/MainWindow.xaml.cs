@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NeoStackTech.TestApplication.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,13 +17,18 @@ using System.Windows.Shapes;
 namespace NeoStackTech.TestApplication
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Представляет главное окно приложения.
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary>
+        /// Инициализирует главное окно приложения.
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
+
+            DataContext = new MainWindowViewModel();
         }
     }
 }
