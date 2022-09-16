@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--  Стандартный фон Flat кнопки.  -->
+    <SolidColorBrush x:Key="DefaultFlatBrush" Color="#8533ff" />
+
+    <!--  Фон подсвеченной Flat кнопки.  -->
+    <SolidColorBrush x:Key="HighlightFlatBrush" Color="#8533ff" />
+
+    <!--  Фон нажатой Flat кнопки.  -->
+    <SolidColorBrush x:Key="PressedFlatBrush" Color="#6600ff" />
+</ResourceDictionary>

@@ -9,7 +9,7 @@ using System.Windows;
 namespace NeoStackTech.TestApplication
 {
     /// <summary>
-    /// Interaction logic for App.xaml
+    /// Класс точки входа в приложение.
     /// </summary>
     public partial class App : Application
     {
