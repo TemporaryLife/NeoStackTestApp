@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeoStackTech.TestApplication", "NeoStackTech.TestApplication\NeoStackTech.TestApplication.csproj", "{2F6A8FAF-D27F-49D4-A9E0-677282AF9873}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NeoStackTech.TestApplication", "NeoStackTech.TestApplication\NeoStackTech.TestApplication.csproj", "{2F6A8FAF-D27F-49D4-A9E0-677282AF9873}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatingTests", "CalculatingTests\CalculatingTests.csproj", "{84FBB826-FBF2-4413-8029-4BADB85ABB42}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{2F6A8FAF-D27F-49D4-A9E0-677282AF9873}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F6A8FAF-D27F-49D4-A9E0-677282AF9873}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F6A8FAF-D27F-49D4-A9E0-677282AF9873}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84FBB826-FBF2-4413-8029-4BADB85ABB42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84FBB826-FBF2-4413-8029-4BADB85ABB42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84FBB826-FBF2-4413-8029-4BADB85ABB42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84FBB826-FBF2-4413-8029-4BADB85ABB42}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

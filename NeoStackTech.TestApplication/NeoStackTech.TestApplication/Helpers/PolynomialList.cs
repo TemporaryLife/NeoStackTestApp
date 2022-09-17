@@ -30,11 +30,11 @@ namespace NeoStackTech.TestApplication.Helpers
         {
             PolynomialCollection = new ObservableCollection<Polynomial>()
             {
-                new Polynomial("Линейная", 1, new List<int> {1,2,3,4,5}),
-                new Polynomial("Квадратичная", 2, new List<int> {10,20,30,40,50}),
-                new Polynomial("Кубическая", 3, new List<int> {100,200,300,400,500}),
-                new Polynomial("4-ой степени", 4, new List<int> {1000,2000,3000,4000,5000}),
-                new Polynomial("5-ой степени", 5, new List<int> {10000,20000,30000,40000,50000}),
+                new Polynomial("Линейная", 1, new List<double> {1,2,3,4,5}),
+                new Polynomial("Квадратичная", 2, new List<double> {10,20,30,40,50}),
+                new Polynomial("Кубическая", 3, new List<double> {100,200,300,400,500}),
+                new Polynomial("4-ой степени", 4, new List<double> {1000,2000,3000,4000,5000}),
+                new Polynomial("5-ой степени", 5, new List<double> {10000,20000,30000,40000,50000}),
             };
         }
 

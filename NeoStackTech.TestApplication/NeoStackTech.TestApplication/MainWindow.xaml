@@ -118,7 +118,7 @@
 
             <!--  Кнопка добавления строки данных.  -->
             <Button
-                Grid.Row="2"               
+                Grid.Row="2"
                 Command="{Binding AddColumnCommand}"
                 Content="Добавить строку"
                 Style="{StaticResource AddRowButtonStyle}" />
