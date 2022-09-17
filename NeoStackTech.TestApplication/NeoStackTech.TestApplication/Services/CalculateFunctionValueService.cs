@@ -11,6 +11,7 @@ namespace NeoStackTech.TestApplication.Services
     /// </summary>
     public static class CalculateFunctionValueService
     {
+
         /// <summary>
         /// Возвращает значение требуемой функции.
         /// </summary>

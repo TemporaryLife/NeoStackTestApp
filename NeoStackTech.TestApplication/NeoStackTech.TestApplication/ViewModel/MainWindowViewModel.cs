@@ -19,38 +19,14 @@ namespace NeoStackTech.TestApplication.ViewModel
         private const int CALCULATING_TIMER_ELAPSED_PERIOD_MILLISECONDS = 1000;
 
         /// <summary>
-        /// Выбранный полином.
-        /// </summary>
-        private Polynomial _selectedPolynomial;
-
-        /// <summary>
         /// Таймер вызова расчёта значений функций.
         /// </summary>
         private Timer _calculatingTimer;
 
         /// <summary>
-        /// Набор возможных полиномов.
-        /// </summary>
-        public ObservableCollection<Polynomial> Polynomials { get; set; }
-
-        /// <summary>
-        /// Количество добавленных пользователем функций для расчёта.
-        /// </summary>
-        public ObservableCollection<Function> Functions { get; set; }
-
-        /// <summary>
         /// Выбранный полином.
         /// </summary>
-        public Polynomial SelectedPolynomial
-        {
-            get => _selectedPolynomial;
-            set => SetProperty(ref _selectedPolynomial, value);
-        }
-
-        /// <summary>
-        /// Команда добавления строки.
-        /// </summary>
-        public RelayCommand AddColumnCommand { get; }
+        private Polynomial _selectedPolynomial;
 
         /// <summary>
         /// Инициализирует объект класса <see cref="MainWindowViewModel"/>.
@@ -67,13 +43,27 @@ namespace NeoStackTech.TestApplication.ViewModel
         }
 
         /// <summary>
-        /// Настраивает таймер расчёта значений функции.
+        /// Команда добавления строки.
         /// </summary>
-        private void ConfigureCalculatingTimer()
+        public RelayCommand AddColumnCommand { get; }
+
+        /// <summary>
+        /// Количество добавленных пользователем функций для расчёта.
+        /// </summary>
+        public ObservableCollection<Function> Functions { get; set; }
+
+        /// <summary>
+        /// Набор возможных полиномов.
+        /// </summary>
+        public ObservableCollection<Polynomial> Polynomials { get; set; }
+
+        /// <summary>
+        /// Выбранный полином.
+        /// </summary>
+        public Polynomial SelectedPolynomial
         {
-            _calculatingTimer = new Timer();
-            _calculatingTimer.Interval = CALCULATING_TIMER_ELAPSED_PERIOD_MILLISECONDS;
-            _calculatingTimer.Elapsed += CalculatingTimerElapsed;
+            get => _selectedPolynomial;
+            set => SetProperty(ref _selectedPolynomial, value);
         }
 
         /// <summary>
@@ -105,6 +95,16 @@ namespace NeoStackTech.TestApplication.ViewModel
                                                                    SelectedPolynomial.Power);
                 }
             }
+        }
+
+        /// <summary>
+        /// Настраивает таймер расчёта значений функции.
+        /// </summary>
+        private void ConfigureCalculatingTimer()
+        {
+            _calculatingTimer = new Timer();
+            _calculatingTimer.Interval = CALCULATING_TIMER_ELAPSED_PERIOD_MILLISECONDS;
+            _calculatingTimer.Elapsed += CalculatingTimerElapsed;
         }
     }
 }

@@ -8,7 +8,6 @@ namespace NeoStackTech.TestApplication.Model
     /// </summary>
     public class Polynomial : ObservableObject
     {
-
         /// <summary>
         /// Коэффициент А.
         /// </summary>
@@ -28,17 +27,12 @@ namespace NeoStackTech.TestApplication.Model
         /// Инициализирует объект класса <see cref="Polynomial"/>.
         /// </summary>
         /// <param name="coefficientsList">Cписок коэффициентов С.</param>
-        public Polynomial(string name,int power,List<double> coefficientsList)
+        public Polynomial(string name, int power, List<double> coefficientsList)
         {
             Name = name;
             Power = power;
             CoefficientsList = coefficientsList;
         }
-
-        /// <summary>
-        /// Имя полинома.
-        /// </summary>
-        public string Name { get; set; }
 
         /// <summary>
         /// Коэффициент А.
@@ -71,6 +65,11 @@ namespace NeoStackTech.TestApplication.Model
         /// Список коэффициентов C.
         /// </summary>
         public List<double> CoefficientsList { get; set; }
+
+        /// <summary>
+        /// Имя полинома.
+        /// </summary>
+        public string Name { get; set; }
 
         /// <summary>
         /// Максимальная степень полинома.
