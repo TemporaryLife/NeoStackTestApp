@@ -4,9 +4,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:converters="clr-namespace:NeoStackTech.TestApplication.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:ie="http://schemas.microsoft.com/expression/2010/interactions"
     xmlns:local="clr-namespace:NeoStackTech.TestApplication"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:pol="clr-namespace:NeoStackTech.TestApplication.Model"
+    xmlns:pol="clr-namespace:NeoStackTech.TestApplication.ViewModel"
     Title="MainWindow"
     Width="800"
     Height="450"
@@ -18,115 +20,148 @@
 
     <Grid>
 
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="40" />
-            </Grid.RowDefinitions>
+        <Viewbox>
+            
+            <Grid Width="850" Height="450">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="40" />
+                </Grid.RowDefinitions>
 
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-
-                <!--  Список возможных видов полиномов.  -->
-                <ListView
-                    Margin="10"
-                    ItemsSource="{Binding Polynomials, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    SelectedItem="{Binding SelectedPolynomial}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate DataType="pol:Polynomial">
-                            <TextBlock Text="{Binding Name}" />
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-
-                <Grid Grid.Column="1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
+                <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
                     </Grid.ColumnDefinitions>
 
-                    <!--  Поле ввода первого коэффициента.  -->
-                    <TextBox
-                        Grid.Column="1"
-                        MinWidth="30"
-                        MinHeight="20"
-                        Margin="0,10,10,10"
-                        HorizontalAlignment="Stretch"
-                        Text="{Binding SelectedPolynomial.CoefficientA, Mode=TwoWay, UpdateSourceTrigger=LostFocus, Converter={StaticResource DoubleConverter}}" />
+                    <!--  Список возможных видов полиномов.  -->
+                    <ListView
+                        Margin="10"
+                        ItemsSource="{Binding Polynomials, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        SelectedItem="{Binding SelectedPolynomial}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate DataType="pol:Polynomial">
+                                <TextBlock Text="{Binding Name}" />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
 
-                    <!--  Текст названия первого коэффициента.  -->
-                    <TextBlock Style="{StaticResource CoefficientTextStyle}" Text="Коэффициент a:" />
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
 
-                    <!--  Поле ввода второго коэффициента.  -->
-                    <TextBox
-                        Grid.Row="1"
-                        Grid.Column="1"
-                        MinWidth="30"
-                        MinHeight="20"
-                        Margin="0,10,10,10"
-                        HorizontalAlignment="Stretch"
-                        Text="{Binding SelectedPolynomial.CoefficientB, Mode=TwoWay, UpdateSourceTrigger=LostFocus, Converter={StaticResource DoubleConverter}}" />
+                        <!--  Поле ввода первого коэффициента.  -->
+                        <TextBox
+                            Grid.Column="1"
+                            MinWidth="30"
+                            MinHeight="20"
+                            Margin="0,10,10,10"
+                            HorizontalAlignment="Stretch"
+                            Text="{Binding SelectedPolynomial.CoefficientA, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DoubleConverter}}">
 
-                    <!--  Текст названия второго коэффициента.  -->
-                    <TextBlock
-                        Grid.Row="1"
-                        Style="{StaticResource CoefficientTextStyle}"
-                        Text="Коэффициент b:" />
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="TextChanged">
+                                    <i:InvokeCommandAction Command="{Binding UpdateCoefficientsCommand}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
 
-                    <!--  Поле выбора третьего коэффициента.  -->
-                    <ComboBox
-                        Grid.Row="2"
-                        Grid.Column="1"
-                        Margin="0,10,10,10"
-                        HorizontalAlignment="Stretch"
-                        ItemsSource="{Binding SelectedPolynomial.CoefficientsList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                        SelectedItem="{Binding SelectedPolynomial.CoefficientC}" />
+                        <!--  Текст названия первого коэффициента.  -->
+                        <TextBlock Style="{StaticResource CoefficientTextStyle}" Text="Коэффициент a:" />
 
-                    <!--  Текст названия третьего коэффициента.  -->
-                    <TextBlock
-                        Grid.Row="2"
-                        Style="{StaticResource CoefficientTextStyle}"
-                        Text="Коэффициент c:" />
+                        <!--  Поле ввода второго коэффициента.  -->
+                        <TextBox
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            MinWidth="30"
+                            MinHeight="20"
+                            Margin="0,10,10,10"
+                            HorizontalAlignment="Stretch"
+                            Text="{Binding SelectedPolynomial.CoefficientB, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DoubleConverter}}">
+
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="TextChanged">
+                                    <i:InvokeCommandAction Command="{Binding UpdateCoefficientsCommand}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
+
+                        <!--  Текст названия второго коэффициента.  -->
+                        <TextBlock
+                            Grid.Row="1"
+                            Style="{StaticResource CoefficientTextStyle}"
+                            Text="Коэффициент b:" />
+
+                        <!--  Поле выбора третьего коэффициента.  -->
+                        <ComboBox
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Margin="0,10,10,10"
+                            HorizontalAlignment="Stretch"
+                            ItemsSource="{Binding SelectedPolynomial.CoefficientsList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            SelectedItem="{Binding SelectedPolynomial.CoefficientC}">
+
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction Command="{Binding UpdateCoefficientsCommand}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </ComboBox>
+
+                        <!--  Текст названия третьего коэффициента.  -->
+                        <TextBlock
+                            Grid.Row="2"
+                            Style="{StaticResource CoefficientTextStyle}"
+                            Text="Коэффициент c:" />
+
+                    </Grid>
                 </Grid>
+
+                <!--  Таблица данных.  -->
+                <DataGrid
+                    Grid.Row="1"
+                    AutoGenerateColumns="False"
+                    BorderBrush="Transparent"
+                    ItemsSource="{Binding Functions}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn
+                            Width="0.3*"
+                            Binding="{Binding ArgumentX, Mode=TwoWay, UpdateSourceTrigger=LostFocus, Converter={StaticResource DoubleConverter}}"
+                            Header="x" />
+                        <DataGridTextColumn
+                            Width="0.3*"
+                            Binding="{Binding ArgumentY, Mode=TwoWay, UpdateSourceTrigger=LostFocus, Converter={StaticResource DoubleConverter}}"
+                            Header="y" />
+                        <DataGridTextColumn
+                            Width="*"
+                            Binding="{Binding FunctionResult}"
+                            Header="Result"
+                            IsReadOnly="True" />
+                    </DataGrid.Columns>
+
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="RowEditEnding">
+                            <i:InvokeCommandAction Command="{Binding UpdateCoefficientsCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </DataGrid>
+
+                <!--  Кнопка добавления строки данных.  -->
+                <Button
+                    Grid.Row="2"
+                    Command="{Binding AddColumnCommand}"
+                    Content="Добавить строку"
+                    Style="{StaticResource AddRowButtonStyle}" />
             </Grid>
+        </Viewbox>
 
-            <!--  Таблица данных.  -->
-            <DataGrid
-                Grid.Row="1"
-                AutoGenerateColumns="False"
-                ItemsSource="{Binding Functions}">
-                <DataGrid.Columns>
-                    <DataGridTextColumn
-                        Width="0.3*"
-                        Binding="{Binding ArgumentX, Mode=TwoWay, UpdateSourceTrigger=LostFocus, Converter={StaticResource DoubleConverter}}"
-                        Header="x" />
-                    <DataGridTextColumn
-                        Width="0.3*"
-                        Binding="{Binding ArgumentY, Mode=TwoWay, UpdateSourceTrigger=LostFocus, Converter={StaticResource DoubleConverter}}"
-                        Header="y" />
-                    <DataGridTextColumn
-                        Width="*"
-                        Binding="{Binding FunctionResult}"
-                        Header="Result"
-                        IsReadOnly="True" />
-                </DataGrid.Columns>
-            </DataGrid>
-
-            <!--  Кнопка добавления строки данных.  -->
-            <Button
-                Grid.Row="2"
-                Command="{Binding AddColumnCommand}"
-                Content="Добавить строку"
-                Style="{StaticResource AddRowButtonStyle}" />
-        </Grid>
     </Grid>
 </Window>

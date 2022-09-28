@@ -1,12 +1,12 @@
 ﻿using Microsoft.VisualStudio.PlatformUI;
 using System.Collections.Generic;
 
-namespace NeoStackTech.TestApplication.Model
+namespace NeoStackTech.TestApplication.ViewModel
 {
     /// <summary>
     /// Предоставляет модель полинома.
     /// </summary>
-    public class Polynomial : ObservableObject
+    public class PolynomialViewModel : ObservableObject
     {
         /// <summary>
         /// Коэффициент А.
@@ -24,10 +24,10 @@ namespace NeoStackTech.TestApplication.Model
         private double _coefficientC;
 
         /// <summary>
-        /// Инициализирует объект класса <see cref="Polynomial"/>.
+        /// Инициализирует объект класса <see cref="PolynomialViewModel"/>.
         /// </summary>
         /// <param name="coefficientsList">Cписок коэффициентов С.</param>
-        public Polynomial(string name, int power, List<double> coefficientsList)
+        public PolynomialViewModel(string name, int power, List<double> coefficientsList)
         {
             Name = name;
             Power = power;

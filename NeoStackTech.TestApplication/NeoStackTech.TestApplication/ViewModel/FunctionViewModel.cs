@@ -5,12 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NeoStackTech.TestApplication.Model
+namespace NeoStackTech.TestApplication.ViewModel
 {
     /// <summary>
     /// Модель функции для расчёта.
     /// </summary>
-    public class Function : ObservableObject
+    public class FunctionViewModel : ObservableObject
     {
         /// <summary>
         /// Аргумент x.
@@ -21,7 +21,7 @@ namespace NeoStackTech.TestApplication.Model
         /// Аргумент y.
         /// </summary>
         private double _argumentY;
-        
+
         /// <summary>
         /// Значение функции для данных аргументов.
         /// </summary>
