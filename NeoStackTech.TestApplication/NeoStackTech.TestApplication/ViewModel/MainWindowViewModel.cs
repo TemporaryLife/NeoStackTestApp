@@ -35,6 +35,9 @@ namespace NeoStackTech.TestApplication.ViewModel
         /// </summary>
         public RelayCommand AddColumnCommand { get; }
 
+        /// <summary>
+        /// Команда обновления коэффициентов.
+        /// </summary>
         public RelayCommand UpdateCoefficientsCommand { get; }
 
         /// <summary>
@@ -67,6 +70,9 @@ namespace NeoStackTech.TestApplication.ViewModel
             CheckAndUpdateCoefficient();
         }
 
+        /// <summary>
+        /// Проверяет на корректность и обновляет коэффициенты.
+        /// </summary>
         private void CheckAndUpdateCoefficient()
         {
 
@@ -74,12 +80,18 @@ namespace NeoStackTech.TestApplication.ViewModel
             {
                 foreach (FunctionViewModel function in Functions)
                 {
+
+                    var coefficientA = double.Parse(SelectedPolynomial.CoefficientA);
+                    var coefficientB = double.Parse(SelectedPolynomial.CoefficientB);
+                    var argumentX = double.Parse(function.ArgumentX);
+                    var argumentY = double.Parse(function.ArgumentY);
+
                     function.FunctionResult = CalculateFunctionValueService.GetFunctionValue(
-                                                                   SelectedPolynomial.CoefficientA,
-                                                                   SelectedPolynomial.CoefficientB,
+                                                                   coefficientA,
+                                                                   coefficientB,
                                                                    SelectedPolynomial.CoefficientC,
-                                                                   function.ArgumentX,
-                                                                   function.ArgumentY,
+                                                                   argumentX,
+                                                                   argumentY,
                                                                    SelectedPolynomial.Power);
                 }
             }

@@ -134,11 +134,11 @@
                     <DataGrid.Columns>
                         <DataGridTextColumn
                             Width="0.3*"
-                            Binding="{Binding ArgumentX, Mode=TwoWay, UpdateSourceTrigger=LostFocus, Converter={StaticResource DoubleConverter}}"
+                            Binding="{Binding ArgumentX, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DoubleConverter}}"
                             Header="x" />
                         <DataGridTextColumn
                             Width="0.3*"
-                            Binding="{Binding ArgumentY, Mode=TwoWay, UpdateSourceTrigger=LostFocus, Converter={StaticResource DoubleConverter}}"
+                            Binding="{Binding ArgumentY, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DoubleConverter}}"
                             Header="y" />
                         <DataGridTextColumn
                             Width="*"

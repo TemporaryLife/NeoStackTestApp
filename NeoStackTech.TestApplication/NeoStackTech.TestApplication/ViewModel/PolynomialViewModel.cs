@@ -11,12 +11,12 @@ namespace NeoStackTech.TestApplication.ViewModel
         /// <summary>
         /// Коэффициент А.
         /// </summary>
-        private double _coefficientA;
+        private string _coefficientA;
 
         /// <summary>
         /// Коэффициент B.
         /// </summary>
-        private double _coefficientB;
+        private string _coefficientB;
 
         /// <summary>
         /// Коэффициент C.
@@ -29,6 +29,9 @@ namespace NeoStackTech.TestApplication.ViewModel
         /// <param name="coefficientsList">Cписок коэффициентов С.</param>
         public PolynomialViewModel(string name, int power, List<double> coefficientsList)
         {
+            CoefficientA = "0";
+            CoefficientB = "0";
+
             Name = name;
             Power = power;
             CoefficientsList = coefficientsList;
@@ -37,19 +40,45 @@ namespace NeoStackTech.TestApplication.ViewModel
         /// <summary>
         /// Коэффициент А.
         /// </summary>
-        public double CoefficientA
+        public string CoefficientA
         {
             get => _coefficientA;
-            set => SetProperty(ref _coefficientA, value);
+            set
+            {
+                if (value.Length > 0)
+                {
+                    if (double.TryParse(value, out double res))
+                    {
+                        SetProperty(ref _coefficientA, value);
+                    }
+                }
+                else
+                {
+                    SetProperty(ref _coefficientA, "0");
+                }               
+            }
         }
 
         /// <summary>
         /// Коэффициент B.
         /// </summary>
-        public double CoefficientB
+        public string CoefficientB
         {
             get => _coefficientB;
-            set => SetProperty(ref _coefficientB, value);
+            set
+            {
+                if (value.Length > 0)
+                {
+                    if (double.TryParse(value, out double res))
+                    {
+                        SetProperty(ref _coefficientB, value);
+                    }
+                }
+                else
+                {
+                    SetProperty(ref _coefficientB, "0");
+                }
+            }
         }
 
         /// <summary>

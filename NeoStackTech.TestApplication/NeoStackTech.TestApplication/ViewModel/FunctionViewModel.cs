@@ -15,12 +15,12 @@ namespace NeoStackTech.TestApplication.ViewModel
         /// <summary>
         /// Аргумент x.
         /// </summary>
-        private double _argumentX;
+        private string _argumentX;
 
         /// <summary>
         /// Аргумент y.
         /// </summary>
-        private double _argumentY;
+        private string _argumentY;
 
         /// <summary>
         /// Значение функции для данных аргументов.
@@ -28,21 +28,56 @@ namespace NeoStackTech.TestApplication.ViewModel
         private double _functionResult;
 
         /// <summary>
+        /// Инициализирует объект класса <see cref="FunctionViewModel"/>.
+        /// </summary>
+        public FunctionViewModel()
+        {
+            ArgumentX = "0";
+            ArgumentY = "0";
+        }
+
+        /// <summary>
         /// Аргумент x.
         /// </summary>
-        public double ArgumentX
+        public string ArgumentX
         {
             get => _argumentX;
-            set => SetProperty(ref _argumentX, value);
+            set
+            {
+                if (value.Length > 0)
+                {
+                    if (double.TryParse(value, out double res))
+                    {
+                        SetProperty(ref _argumentX, value);
+                    }
+                }
+                else
+                {
+                    SetProperty(ref _argumentX, "0");
+                }
+            }
         }
 
         /// <summary>
         /// Аргумент y.
         /// </summary>
-        public double ArgumentY
+        public string ArgumentY
         {
             get => _argumentY;
-            set => SetProperty(ref _argumentY, value);
+            set
+            {
+                if (value.Length > 0)
+                {
+                    if (double.TryParse(value, out double res))
+                    {
+                        SetProperty(ref _argumentY, value);
+                    }
+                }
+                else
+                {
+                    SetProperty(ref _argumentY, "0");
+                }
+            }
         }
 
         /// <summary>
